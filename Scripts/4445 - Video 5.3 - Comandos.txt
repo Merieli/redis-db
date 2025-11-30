@@ -1,0 +1,49 @@
+Vídeo 5.2 – Persistencia dos usuários após a reinicialização.
+
+- redis-cli --raw -a SuperSenhaSegura123
+- redis-cli --raw --user leitor -a password123
+- redis-cli --raw --user editor -a password123
+
+Vídeo 5.3 - Continuando a configuração da persistência dos usuários
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- exit
+
+- redis-cli --raw
+
+- exit
+
+- sudo nano /etc/redis/redis.conf
+
+- ACL LIST
+
+- ACL SETUSER default on >SuperSenhaSegura123 ~* +@all
+- ACL SETUSER leitor on >password123 ~tarefa:* +HGETALL +ZRANGE
+- ACL SETUSER editor on >password123 ~tarefa:* +HSET +ZADD +GET +HGETALL +ZRANGE 
+- exit
+
+- sudo ls -lh /etc/redis
+
+- redis-cli --raw -a SuperSenhaSegura123
+- ACL SAVE
+- exit
+
+- sudo nano /etc/redis/users.acl
+
+- sudo nano /etc/redis/redis.conf
+
+- sudo systemctl restart redis
+
+- redis-cli --raw --user leitor -a password123
+
+- HGETALL tarefa:DevSoftware:00018
+
+- ZRANGE tarefa:2025-04-19 0 -1 WITHSCORES
+
+- redis-cli --raw -u editor -a password123
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- ACL LIST.
+

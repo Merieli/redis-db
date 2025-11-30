@@ -1,0 +1,26 @@
+4445 - Vídeo 1.4 – Simulando uma perda no arquivo RDB
+
+- sudo ls -la /var/lib/redis
+
+- redis-cli --raw SAVE
+
+- sudo systemctl stop redis
+
+- sudo rm /var/lib/redis/dump.rdb
+
+- sudo ls -la /var/lib/redis
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00006
+
+- redis-cli --raw HSET tarefa:DevSoftware:00006 descricao "Implementar dashboard de métricas" responsavel "Cláudio Martins" status "Pendente" prioridade "Alta" categoria "Documentacao"
+
+- redis-cli --raw SAVE
+
+- sudo ls -la /var/lib/redis
+
+- sudo systemctl restart redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00006
+

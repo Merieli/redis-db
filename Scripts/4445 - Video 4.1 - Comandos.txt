@@ -1,0 +1,28 @@
+Vídeo 4.1 – Configurando senha com requirepass e testando AUTH 
+
+- sudo nano /etc/redis/redis.conf
+
+- requirepass SuperSenhaSegura123
+
+- sudo systemctl restart redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00013
+
+- redis-cli --raw -a SuperSenhaSegura123 HGETALL tarefa:DevSoftware:00013
+
+- redis-cli --raw -a SuperSenhaSegura123#### HGETALL tarefa:DevSoftware:00013
+
+- redis-cli -a SuperSenhaSegura123
+
+- HGETALL tarefa:DevSoftware:00013
+
+
+
+
+
+
+
+
+
+
+

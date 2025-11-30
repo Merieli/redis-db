@@ -1,0 +1,38 @@
+Vídeo 4.3 – Criando perfis de usuários com ACLs para acesso restrito ao sistema de tarefas 
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- ACL SETUSER leitor on >password123 ~tarefa:* +HGETALL +ZRANGE
+
+- exit
+
+- redis-cli --raw --user leitor -a password123
+
+- HGETALL tarefa:DevSoftware:00013
+
+- HSET tarefa:DevSoftware:00017 descricao "Cadastrar novo colaborador" responsavel "Ximena Teixeira" status "Pendente" prioridade "Alta" categoria "RH"
+
+- exit
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- ACL SETUSER editor on >password123 ~tarefa:* +HSET +ZADD +GET +HGETALL +ZRANGE
+
+- exit
+
+- redis-cli --raw --user editor -a password123
+
+- HSET tarefa:DevSoftware:00017 descricao "Cadastrar novo colaborador" responsavel "Ximena Teixeira" status "Pendente" prioridade "Alta" categoria "RH"
+
+- DEL tarefa:DevSoftware:00017
+
+- exit
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- ACL LIST
+
+- ACL DELUSER leitor
+
+
+

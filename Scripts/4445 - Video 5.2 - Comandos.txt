@@ -1,0 +1,22 @@
+Vídeo 5.2 – Persistencia dos usuários após a reinicialização.
+
+- redis-cli --raw -a SuperSenhaSegura123
+- redis-cli --raw --user leitor -a password123
+- redis-cli --raw --user editor -a password123
+
+- sudo nano /etc/redis/redis.conf
+
+- sudo ls -lh /etc/redis
+
+- sudo systemctl restart redis
+
+- sudo grep '^logfile' /etc/redis/redis.conf
+
+- sudo tail -n 20 /var/log/redis/redis-server.log
+
+- sudo nano /etc/redis/users.acl
+
+- sudo ls -lh /etc/redis
+
+- sudo systemctl restart redis
+

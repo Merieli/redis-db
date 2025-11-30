@@ -1,0 +1,49 @@
+Vídeo 2.2 – Criando tarefas e testando recuperação com RDB após crash 
+
+- sudo systemctl stop redis
+
+- sudo cp /home/victor/redisscr/redis.conf /etc/redis/ 
+
+- sudo ls -lh /var/lib/redis
+
+- sudo systemctl start redis
+
+- redis-cli --raw HSET tarefa:DevSoftware:00009 descricao "Planejar sprint de abril" responsavel "Karina Moraes" status "Pendente" prioridade "Alta" categoria "Testes"
+
+- redis-cli --raw HSET tarefa:DevSoftware:00010 descricao "Corrigir bugs em produção" responsavel "Gustavo Batista" status "Executando" prioridade "Baixa" categoria "Testes"
+
+- redis-cli --raw SAVE
+
+- redis-cli --raw LASTSAVE
+
+- date -d @<LASTDATE>
+
+- sudo ls -lh /var/lib/redis/dump.rdb
+
+- ps aux | grep redis
+
+- sudo kill -9 <PID_DO_REDIS>
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00009
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00010
+
+- sudo ls -lh /var/lib/redis/dump.rdb
+
+- redis-cli --raw HSET tarefa:DevSoftware:00011 descricao "Testar endpoint da API" responsavel "Helena Martins" status "Pendente" prioridade "Média" categoria "Documentacao"
+
+- ps aux | grep redis
+
+- sudo kill -9 <PID_DO_REDIS>
+
+- sudo ls -lh /var/lib/redis/dump.rdb
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00011
+
+
+
+

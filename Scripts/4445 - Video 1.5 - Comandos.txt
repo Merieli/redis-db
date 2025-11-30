@@ -1,0 +1,22 @@
+Vídeo 1.4 – Ativando o modo AOF e acompanhando gravações em tempo real
+
+- sudo nano /etc/redis/redis.conf
+
+- appendonly yes
+
+- appendfsync everysec
+
+- sudo systemctl restart redis
+
+- redis-cli --raw CONFIG GET appendonly
+
+- redis-cli --raw HSET tarefa:DevSoftware:00007 descricao "Revisar testes automatizados" responsavel "João Silva" status "Pendente" prioridade "Média" categoria "Testes"
+
+- sudo ls -la /var/lib/redis
+
+- sudo tail -n 10 /var/lib/redis/appendonly.aof
+
+- sudo systemctl restart redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00007
+

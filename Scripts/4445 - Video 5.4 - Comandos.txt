@@ -1,0 +1,30 @@
+Vídeo 5.4 – Checklist final de produção testando tudo com um cenário completo
+
+- redis-cli --raw --user editor -a password123
+- HSET tarefa:DevSoftware:00019 descricao "Revisar permissões e acessos" responsavel "Beatriz Amaral" status "Pendente" prioridade "Média" categoria "Segurança"
+
+- exit
+- redis-cli --raw
+- AUTH SuperSenhaSegura123
+- CONFIG GET save
+- CONFIG GET appendonly
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00019
+
+- exit
+- redis-cli --raw --user leitor -a password123
+- HSET tarefa:DevSoftware:00019 descricao "Revisar permissões e acessos" responsavel "Beatriz Amaral" status "Pendente" prioridade "Média" categoria "Segurança"
+
+- sudo /home/victor/redisscr/backup/backup_redis.sh
+
+- redis-cli --raw --user editor -a password123
+- HSET tarefa:DevSoftware:00020 descricao "Revisar permissões e acessos" responsavel "Beatriz Amaral" status "Pendente" prioridade "Média" categoria "Segurança"
+
+- ps aux | grep redis
+- sudo kill -9 <PID_DO_REDIS>
+
+- sudo /home/victor/redisscr/backup/restore_redis.sh 2025-04-15_19-45-26
+
+- redis-cli --raw --user leitor -a password123
+- HGETALL tarefa:DevSoftware:00020
+

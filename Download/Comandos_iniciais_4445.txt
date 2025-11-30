@@ -1,0 +1,15 @@
+
+HSET tarefa:DevSoftware:00003 descricao "Correção de bugs na tela de login" responsavel "Maria Machado" status "Executando" prioridade "Alta" categoria "Testes"
+HSET tarefa:DevSoftware:00004 descricao "Implementação da API de pagamentos" responsavel "João Silva" status "Pendente" prioridade "Baixa" categoria "Testes"
+HSET tarefa:DevSoftware:00005 descricao "Testes de integração do sistema" responsavel "Maria Machado" status "Executando" prioridade "Média" categoria "Documentacao"
+
+ZADD tarefa:2025-03-21 1300 '{"hora": "13:00", "descricao": "Conferência sobre inovação tecnológica no setor imobiliário", "responsavel": "Victor", "prioridade": "Alta", "observacoes": "Levar material impresso e validar inscrição no evento"}' 1500 '{"hora": "15:00", "descricao": "Workshop interno sobre inovação", "responsavel": "Victor", "prioridade": "Alta", "observacoes": "Enviar convite"}' 1800 '{"hora": "18:00", "descricao": "Revisão do orçamento trimestral", "responsavel": "Victor", "prioridade": "Baixa", "observacoes": "Analisar despesas fixas"}'
+
+
+ZADD progresso:DevSoftware 1711200000 "00004" 1711500000 "00002" 1711600000 "00005"
+
+ZADD tarefas:DevSoftware:Concluidas 1711500000 "00001"
+
+ZADD tarefas:DevSoftware:Pendentes 1 "00004"
+
+SADD set:responsaveis:DevSoftware "João Silva" "Cláudio Martins" "Maria Machado"

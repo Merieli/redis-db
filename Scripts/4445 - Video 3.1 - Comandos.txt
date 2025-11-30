@@ -1,0 +1,49 @@
+Vídeo 3.1 – Fazendo backup manual dos arquivos de dados e restaurando após perda 
+
+- sudo systemctl stop redis
+
+- sudo cp /home/victor/redisscr/redisAOF.conf /etc/redis/redis.conf
+
+- sudo systemctl start redis
+
+- redis-cli CONFIG GET dir
+
+- redis-cli CONFIG GET appendonly
+
+- redis-cli --raw HSET tarefa:DevSoftware:00013 descricao "Finalizar layout do painel" responsavel "Gabriela Rocha" status "Executando" prioridade "Alta" categoria "Design"
+
+- redis-cli --raw ZADD tarefa:2025-04-17 1700 '{"hora": "17:00", "descricao": "Apresentar protótipo final", "responsavel": "Gabriela Rocha", "prioridade": "Alta"}'
+
+- sudo ls -lh /var/lib/redis
+
+- redis-cli --raw SAVE
+
+- sudo cp /var/lib/redis/dump.rdb /home/victor/redisscr/backup/
+
+- sudo cp /var/lib/redis/appendonly.aof /home/victor/redisscr/backup/ 2>/dev/null || echo "AOF não está ativo"
+
+- sudo systemctl stop redis
+
+- sudo rm -f /var/lib/redis/dump.rdb /var/lib/redis/appendonly.aof
+
+- sudo ls -lh /var/lib/redis
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00013
+
+- sudo systemctl stop redis
+
+- sudo cp /home/victor/redisscr/backup/dump.rdb /var/lib/redis/
+
+- sudo cp /home/victor/redisscr/backup/appendonly.aof /var/lib/redis/ 2>/dev/null || echo "AOF não estava ativo"
+
+- sudo systemctl restart redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00013
+
+- redis-cli --raw ZRANGE tarefa:2025-04-17 0 -1 WITHSCORES
+
+
+
+

@@ -1,0 +1,33 @@
+Vídeo 3.4 – Automatizando a recuperação do Backup 
+
+- dos2unix /home/victor/redisscr/backup/restore_redis.sh
+
+- chmod +x /home/victor/redisscr/backup/restore_redis.sh
+
+<2025-04-21_19-44-57>
+
+- redis-cli --raw HSET tarefa:DevSoftware:00016 descricao "Implementar autenticação com OAuth2" responsavel "Lucas Pereira" status "Executando" prioridade "Alta" categoria "Segurança"
+
+- redis-cli --raw ZADD tarefa:2025-04-18 1415 '{"hora": "14:15", "descricao": "Apresentação do roadmap trimestral", "responsavel": "Lucas Pereira", "prioridade": "Alta"}'
+
+- sudo /home/victor/redisscr/backup/backup_redis.sh
+
+- sudo /home/victor/redisscr/backup/restore_redis.sh 2025-04-21_19-44-57
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00016
+
+- redis-cli --raw ZRANGE tarefa:2025-04-18 0 -1 WITHSCORES
+
+<2025-04-15_01-36-36> 
+
+- sudo /home/victor/redisscr/backup/restore_redis.sh 2025-04-21_20-05-51
+
+
+
+
+
+
+
+
+
+
