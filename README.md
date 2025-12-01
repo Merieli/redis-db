@@ -10,6 +10,22 @@ Usa um modelo chave-valor, e não suporta consultas complexas como SQL, tem alt�
 
 Não armazena vídeos, imagens ou som, mas o que se costuma fazer que é possível é armazenar em uma chave o link para acessar o arquivo armazenado em outro local, como um servidor de arquivos ou um serviço de armazenamento em nuvem.
 
+## Vantagens e Desvantagens dos Bancos de Dados Chave-Valor
+
+### Vantagens
+
+- Desempenho superior: Operações rápidas de leitura e gravação, devido à ausência de complexidade relacional.
+- Escalabilidade horizontal: Permite distribuir dados entre vários servidores, aumentando a capacidade sem comprometer o desempenho.
+- Flexibilidade: Pode armazenar diferentes tipos de dados sem necessidade de esquemas rígidos.
+- Fácil implementação: A estrutura chave-valor é simples, tornando a configuração e uso mais intuitivos.
+- Baixo consumo de recursos: Otimizado para armazenar e recuperar dados com o mínimo de processamento.
+
+### Desvantagens
+
+- Falta de suporte a consultas complexas: Não permite buscas avançadas sem indexação externa.
+- Ausência de relacionamentos: Não é adequado para aplicações que exigem integridade referencial e normalização de dados.
+- Gerenciamento de grandes volumes pode ser desafiador: Pode exigir estratégias adicionais para garantir consistência em bancos distribuídos.
+
 
 ## Para que se aplica na prática?
 
@@ -42,6 +58,23 @@ Se eu inserir um dado com uma determinada key e em seguida inserir outro dado co
 SET {key} {value} NX
 ```
 
+Para definir um valor somente se a chave já existir, pode-se usar o comando XX (Set if eXists), assim será apenas possível alterar o valor, exemplo:
+
+```
+SET {key} {value} XX
+```
+
+Para atualizar aproveitando o valor existente e só acrescentar algo ao final do valor, pode-se usar o comando APPEND, exemplo:
+
+```
+APPEND {key} {value}
+```
+
+Para incluir vários valores ao mesmo tempo:
+```
+MSET {key1} {value1} {key2} {value2} ...
+```
+
 
 **Para visualizar todas as chaves no banco:**
 ```
@@ -51,6 +84,16 @@ KEYS *
 **Para obter o valor de uma chave no banco:**
 ```
 GET {key}
+```
+
+Para efetuar a substituição de uma chave por um novo valor e retornar o valor antigo:
+```
+GETSET {key} {new_value}
+```
+
+Para visualizar mais de uma chave ao mesmo tempo:
+```
+MGET {key1} {key2} {key3} ...
 ```
 
 **Para deletar uma chave no banco:**
@@ -105,8 +148,23 @@ HVALS {key}
 FLUSHDB
 ```
 
+## Principais Bancos de Dados Chave-Valor
+
+### Bancos de Dados Open Source e On-Premises
+
+- Redis: Popular para caching, filas e armazenamento em memória.
+- Memcached: Simples e eficiente para caching distribuído.
+- Berkeley DB: Antigo e confiável, usado em sistemas embarcados.
+- RocksDB: Desenvolvido pelo Facebook para alto desempenho em escrita.
+- LevelDB: Criado pelo Google, usado em armazenamento de chaves de pequeno porte.
 
 
+### Bancos de Dados Chave-Valor em Nuvem
+
+- Amazon DynamoDB (AWS) – Banco de dados NoSQL totalmente gerenciado, altamente escalável e usado para aplicações web e mobile.
+- Azure Cosmos DB (Microsoft) – Suporte a múltiplos modelos, incluindo chave-valor, com alta disponibilidade global.
+- Google Cloud Firestore (Google) – Banco de dados NoSQL que suporta pares chave-valor e sincronização em tempo real.
+- IBM Cloudant – Banco de dados NoSQL gerenciado, projetado para aplicações distribuídas.
 
 
 Ao administrar o ambiente é neccessário considerar os seguintes aspectos:
