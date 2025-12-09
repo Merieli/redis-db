@@ -148,6 +148,21 @@ HVALS {key}
 FLUSHDB
 ```
 
+----
+
+É possível usar prefixos nas chaves para organizar melhor os dados, por exemplo:
+
+```
+SET user:1000:name "João Silva"
+```
+
+Ou então para filtrar os dados:
+
+```
+KEYS user:*
+```
+
+
 ## Principais Bancos de Dados Chave-Valor
 
 ### Bancos de Dados Open Source e On-Premises
