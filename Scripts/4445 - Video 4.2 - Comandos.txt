@@ -1,0 +1,37 @@
+Vídeo 4.2 – Limitando acessos com bind e simulação de acesso externo negado 
+
+- sudo cp /etc/redis/redis.conf /home/victor/redisscr/redisSEC.conf 
+
+- sudo nano /etc/redis/redis.conf
+
+- bind 0.0.0.0 ::1
+
+- protected-mode no
+
+- sudo systemctl restart redis
+
+- https://github.com/tporadowski/redis/releases
+
+-  ip addr | grep eth0
+
+- & "C:\Program Files\Redis\redis-cli.exe" -h 192.168.164.13 -a SuperSenhaSegura123
+
+- HGETALL tarefa:DevSoftware:00013
+
+- redis-cli -a SuperSenhaSegura123
+
+- sudo nano /etc/redis/redis.conf
+
+- bind 172.27.98.219
+
+- sudo systemctl restart redis
+
+- & "C:\Program Files\Redis\redis-cli.exe" -h 172.27.98.219 -a SuperSenhaSegura123
+
+- redis-cli -a SuperSenhaSegura123
+
+- sudo cp /home/victor/redisscr/redisSEC.conf /etc/redis/redis.conf 
+
+- sudo systemctl restart redis
+
+- redis-cli -a SuperSenhaSegura123

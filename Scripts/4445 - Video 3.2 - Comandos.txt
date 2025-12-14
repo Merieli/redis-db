@@ -1,0 +1,30 @@
+Vídeo 3.2 – Criando um script de backup agendado com cron e comandos Linux 
+
+- sudo apt install dos2unix
+
+- dos2unix /home/victor/redisscr/backup/backup_redis.sh
+
+- chmod +x /home/victor/redisscr/backup/backup_redis.sh
+
+- sudo /home/victor/redisscr/backup/backup_redis.sh
+
+- sudo crontab -e
+
+"" ********************************************************************************
+no crontab for victor - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.basic
+  3. /usr/bin/vim.tiny
+
+Choose 1-3 [1]:
+"" ********************************************************************************
+
+0 2 * * * /home/victor/redisscr/backup/backup_redis.sh >> /home/victor/redisscr/backup/backup.log 2>&1
+
+
+
+
+

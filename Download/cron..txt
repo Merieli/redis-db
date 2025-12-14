@@ -1,0 +1,1 @@
+0 2 * * * /home/victor/redisscr/backup/backup_redis.sh >> /home/victor/redisscr/backup/backup.log 2>&1

@@ -1,0 +1,24 @@
+Vídeo 2.3 – Simulando edições no sistema e acompanhando via AOF 
+
+- sudo systemctl stop redis
+
+- sudo nano /etc/redis/redis.conf
+
+- appendonly yes
+
+- sudo cp /etc/redis/redis.conf  /home/victor/redisscr/redisAOF.conf
+
+- sudo systemctl start redis
+
+- redis-cli --raw CONFIG GET appendonly
+
+- redis-cli --raw HSET tarefa:DevSoftware:00011 descricao "Testar endpoint da API" responsavel "Helena Martins" status "Pendente" prioridade "Média" categoria "Documentacao"
+
+- ps aux | grep redis
+- sudo kill -9 <PID_DO_REDIS>
+
+- sudo ls -lh /var/lib/redis
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00011

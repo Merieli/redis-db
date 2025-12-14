@@ -1,0 +1,38 @@
+Vídeo 5.1 – Simulando reboot do servidor com validação de recuperação automática 
+
+- redis-cli --raw -a SuperSenhaSegura123 CONFIG GET appendonly
+
+- redis-cli --raw --user editor -a password123
+
+- HSET tarefa:DevSoftware:00018 descricao "Migrar dados para novo cluster" responsavel "Walter Cruz" status "Executando" prioridade "Alta" categoria "Infraestrutura"
+
+- ZADD tarefa:2025-04-19 1100 '{"hora": "11:00", "descricao": "Revisão com equipe de suporte", "responsavel": "Walter Cruz", "prioridade": "Média"}'
+
+- exit
+
+- redis-cli --raw --user leitor -a password123
+
+- HGETALL tarefa:DevSoftware:00013
+
+- ZRANGE tarefa:2025-04-19 0 -1 WITHSCORES
+
+- exit
+
+- sudo systemctl restart redis
+
+- redis-cli --raw -u leitor -a password123
+
+- redis-cli --raw -u editor -a password123
+
+- redis-cli --raw -a SuperSenhaSegura123
+
+- HGETALL tarefa:DevSoftware:00018
+
+- ZRANGE tarefa:2025-04-19 0 -1 WITHSCORES
+
+- ACL LIST
+
+- exit
+
+
+

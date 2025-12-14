@@ -1,0 +1,22 @@
+Vídeo 2.1 – Ajustando as configurações para combinar RDB e AOF de forma eficiente 
+
+- sudo ls -la /var/lib/redis
+
+- redis-cli --raw CONFIG GET appendonly
+
+- redis-cli --raw CONFIG GET save
+
+- redis-cli --raw CONFIG SET save "60 1"
+
+- redis-cli --raw CONFIG SET appendfsync everysec
+
+- redis-cli --raw HSET tarefa:DevSoftware:00008 descricao "Atualizar documentação técnica" responsavel "Fernanda Alves" status "Executando" prioridade "Alta" categoria "Documentacao"
+
+- sudo tail -n 5 /var/lib/redis/appendonly.aof
+
+- sudo ls -la /var/lib/redis
+
+- sudo systemctl restart redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00008
+

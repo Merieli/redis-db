@@ -1,0 +1,3 @@
+SET tarefa:2025-12-15:11_00 "Apresentação do projeto de sistema de custos"
+SET tarefa:2025-12-15:11_45 "Reunião de revisão das tarefas do projeto"
+SET tarefa:2025-12-15:12_45 "Almoco com o cliente"

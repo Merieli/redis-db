@@ -1,0 +1,17 @@
+Vídeo 1.3 – Configurando snapshots RDB no Redis e simulando uma falha
+
+- sudo ls -l /etc/redis/redis.conf
+
+- sudo cp /etc/redis/redis.conf /home/victor/redisscr/
+
+- redis-cli --raw PING
+
+- redis-cli --raw HSET tarefa:DevSoftware:00006 descricao "Implementar dashboard de métricas" responsavel "Cláudio Martins" status "Pendente" prioridade "Alta" categoria "Documentacao"
+
+- redis-cli --raw CONFIG GET dir
+
+- redis-cli --raw CONFIG GET save
+
+save
+900 1 300 10 60 10000
+

@@ -1,0 +1,57 @@
+Vídeo 3.3 – Simulando recuperação completa: apagando tudo e restaurando o sistema 
+
+- redis-cli --raw HSET tarefa:DevSoftware:00014 descricao "Publicar release da nova versão" responsavel "Ricardo Lima" status "Executando" prioridade "Alta" categoria "Deploy"
+
+- redis-cli --raw ZADD tarefa:2025-04-18 1600 '{"hora": "16:00", "descricao": "Call com o cliente final", "responsavel": "Ricardo Lima", "prioridade": "Alta"}'
+
+- redis-cli --raw SAVE
+
+- sudo /home/victor/redisscr/backup/backup_redis.sh
+
+<2025-04-21_19-43-49>
+
+- redis-cli --raw HSET tarefa:DevSoftware:00015 descricao "Revisar documentação técnica da API" responsavel "Fernanda Alves" status "Pendente" prioridade "Média" categoria "Documentacao"
+
+- redis-cli --raw ZADD tarefa:2025-04-18 1030 '{"hora": "10:30", "descricao": "Revisão de requisitos com equipe de produto", "responsavel": "Fernanda Alves", "prioridade": "Média"}'
+
+- sudo /home/victor/redisscr/backup/backup_redis.sh
+
+<2025-04-21_19-44-57>
+
+- sudo systemctl stop redis
+
+- sudo rm -f /var/lib/redis/dump.rdb /var/lib/redis/appendonly.aof
+
+- sudo cp /home/victor/redisscr/backup/<DATA HORA>/dump.rdb /var/lib/redis/
+
+- sudo cp /home/victor/redisscr/backup/<DATA HORA>/appendonly.aof /var/lib/redis/
+
+- sudo chown redis:redis /var/lib/redis/dump.rdb /var/lib/redis/appendonly.aof
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00014
+
+- redis-cli --raw ZRANGE tarefa:2025-04-18 0 -1 WITHSCORES
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00015
+
+- sudo systemctl stop redis
+
+- sudo rm -f /var/lib/redis/dump.rdb /var/lib/redis/appendonly.aof
+
+- sudo cp /home/victor/redisscr/backup/<DATA HORA>/dump.rdb /var/lib/redis/
+
+- sudo cp /home/victor/redisscr/backup/<DATA HORA>/appendonly.aof /var/lib/redis/
+
+- sudo chown redis:redis /var/lib/redis/dump.rdb /var/lib/redis/appendonly.aof
+
+- sudo systemctl start redis
+
+- redis-cli --raw HGETALL tarefa:DevSoftware:00015
+
+- redis-cli --raw ZRANGE tarefa:2025-04-18 0 -1 WITHSCORES
+
+
+
+
