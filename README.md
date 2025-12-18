@@ -320,4 +320,3 @@ Ao administrar o ambiente é neccessário considerar os seguintes aspectos:
 - Persistência
 - Backup
 - Segurança
-
